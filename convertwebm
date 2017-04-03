@@ -11,5 +11,5 @@ fi
 
 for file in "$1"*.webm; do ffmpeg -i "$file" "$1""$(basename "$file" .webm).mp3"; done
 
-#Uncomment the next line if you want to delete the remaining .webm files
+# Uncomment the next line if you want to delete the remaining .webm files
 rm "$1"*.webm
