@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Brightly is a small script (my first, ayyy!) which presents a popup in which
+# the user can set the brightness of the display. On Lenovo Thinkpad X220 the 
+# range of brightness is from 0-100. You might need to try and change that.
+
+xbacklight -set $(zenity --entry --text "Set brightness to (0-100):") 

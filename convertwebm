@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This script will turn your .webm music files to .mp3.
+# For example, the command could be: "convertwebm /home/Sunde/Music/"
+
+if [ -z "$1" ]
+  then
+    echo "You must sign the working directory"
+    exit 1
+fi
+
+for file in "$1"*.webm; do ffmpeg -i "$file" "$1""$(basename "$file" .webm).mp3"; done
+
+#Uncomment the next line if you want to delete the remaining .webm files
+rm "$1"*.webm

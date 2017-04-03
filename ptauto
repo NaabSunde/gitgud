@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This script will commence powertops auto-tune and disable bluetooth.
+# Useful to users who want to save some battery.
+
+rfkill block bluetooth
+pkexec powertop --auto-tune
