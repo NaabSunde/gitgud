@@ -1,15 +1,35 @@
 #!/bin/bash
 
-# This script will turn your .webm music files to .mp3.
-# For example, the command could be: "convertwebm /home/Sunde/Music/"
-
-if [ -z "$1" ]
-  then
-    echo "You must sign the working directory"
-    exit 1
+if [ -z "$1" ]; then
+    echo "You must sign the working directory, see -h."
+    exit 0
 fi
 
-for file in "$1"*.webm; do ffmpeg -i "$file" "$1""$(basename "$file" .webm).mp3"; done
+if [ $1 = -h ] || [ $1 = --help ]; then 
+        echo
+        echo "This script will turn your .webm music files to .mp3."
+        echo
+        echo "Usage; convertwebm /%PATH%/ [second argument]"
+        echo "For example: convertwebm /home/Sunde/music/ -d"
+        echo "Second arguments:"
+        echo "-d - The script will delete .webm files."
+        echo "-v - Show scripts version." 
+        exit 0
+fi
 
-# Uncomment the next line if you want to delete the remaining .webm files
-rm "$1"*.webm
+if [ "$1" = -v ] || [ "$1" = --version ]; then 
+    echo "Version: 170405-a"
+    exit 0
+else
+if [ -d "$1" ]; then
+   for file in "$1"*.webm; do ffmpeg -i "$file" "$1""$(basename "$file" .webm).mp3"; done
+else
+    echo "Directory does not exist. Typo?"
+    exit 0
+fi
+fi
+if [ "$2" = -d ]; then
+     rm "$1"*.webm
+else
+    exit 0
+fi
