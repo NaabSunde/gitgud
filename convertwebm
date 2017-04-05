@@ -1,3 +1,5 @@
+#This branch is going to develope into a one-in-all music converter, which can convert any type of file.
+
 #!/bin/bash
 
 if [ -z "$1" ]; then
